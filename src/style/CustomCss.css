@@ -1,0 +1,24 @@
+body {
+	/* background-image: url(https://www.heclinic.com.au/wp-content/uploads/blue-gradient-abstract-hd-wallpaper-1920x1080-4252.png); */
+	/* background-image: linear-gradient(to bottom right, #000b6e, #00b7ff, #000b6e); */
+	background-image: radial-gradient(circle, #379cd2, #4cb1e7);
+}
+.celeste {
+	background-color: #318bbb;
+	/* 	background-image: linear-gradient(45deg, #0e2797, #002442); */
+}
+.celeste2 {
+	background-color: #138dcf;
+}
+
+.verde {
+	background-color: #009726;
+}
+
+.sombra {
+	text-shadow: black -2px 2px 2px;
+}
+
+footer {
+	background-image: linear-gradient(0deg, #1f0042, blueviolet);
+}
