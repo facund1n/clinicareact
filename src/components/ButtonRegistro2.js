@@ -2,41 +2,37 @@ import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const ButtonInicioSesion = (props) => {
+const ButtonRegistro2 = () => {
   const [smShow, setSmShow] = useState(false);
+
   return (
     <>
-      <Button
-        variant="outline-light"
-        className="m-1"
-        onClick={() => setSmShow(true)}
-      >
-        Iniciar Sesión
-      </Button>
+      <Link variant="light" className="m-1" onClick={() => setSmShow(true)}>
+        Click Aquí
+      </Link>
       <Modal
-        {...props}
         size="sm"
         show={smShow}
         onHide={() => setSmShow(false)}
         aria-labelledby="example-modal-sizes-title-sm"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title
             id="example-modal-sizes-title-sm"
             className="lead font-weight-bold"
           >
-            Iniciar Sesión:
+            Crear cuenta:
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Link to="login-pacientes">
-            <Button variant="primary" className="my-2 " block>
+          <Link to="/registro-pacientes">
+            <Button variant="primary" className="my-2" block>
               Paciente
             </Button>
           </Link>
-          <Link to="login-medicos">
-            <Button variant="success" className="my-2" block>
+          <Link to="/registro-medicos">
+            <Button variant="success" className="p-2" block>
               Médico
             </Button>
           </Link>
@@ -46,4 +42,4 @@ const ButtonInicioSesion = (props) => {
   );
 };
 
-export default ButtonInicioSesion;
+export default ButtonRegistro2;

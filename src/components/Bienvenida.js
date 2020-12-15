@@ -25,7 +25,9 @@ const Bienvenida = () => {
                   variant="light"
                   className=" text-center p-2 px-5 shadow"
                 >
-                  <a className="lead text-dark nav nav-link">Perdir Turno</a>
+                  <div className="lead text-dark nav nav-link">
+                    Perdir Turno
+                  </div>
                 </Button>
               </Link>
             </Col>
@@ -46,7 +48,9 @@ const Bienvenida = () => {
                   variant="light"
                   className=" text-center p-2 px-5 shadow"
                 >
-                  <a className="lead text-dark nav nav-link">Perdir Turno</a>
+                  <div className="lead text-dark nav nav-link">
+                    Perdir Turno
+                  </div>
                 </Button>
               </Link>
             </Col>

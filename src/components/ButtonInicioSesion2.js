@@ -2,19 +2,14 @@ import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const ButtonInicioSesion = (props) => {
+const ButtonInicioSesion2 = () => {
   const [smShow, setSmShow] = useState(false);
   return (
     <>
-      <Button
-        variant="outline-light"
-        className="m-1"
-        onClick={() => setSmShow(true)}
-      >
+      <Link className="m-1" onClick={() => setSmShow(true)}>
         Iniciar Sesión
-      </Button>
+      </Link>
       <Modal
-        {...props}
         size="sm"
         show={smShow}
         onHide={() => setSmShow(false)}
@@ -30,12 +25,12 @@ const ButtonInicioSesion = (props) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Link to="login-pacientes">
+          <Link to="/login-pacientes">
             <Button variant="primary" className="my-2 " block>
               Paciente
             </Button>
           </Link>
-          <Link to="login-medicos">
+          <Link to="/login-medicos">
             <Button variant="success" className="my-2" block>
               Médico
             </Button>
@@ -46,4 +41,4 @@ const ButtonInicioSesion = (props) => {
   );
 };
 
-export default ButtonInicioSesion;
+export default ButtonInicioSesion2;

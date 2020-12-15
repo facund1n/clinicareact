@@ -1,5 +1,6 @@
 body {
-  background-image: radial-gradient(circle, #379cd2, #4cb1e7);
+  background-image: url("https://cavespringvet.com/wp-content/uploads/2017/12/background.png");
+  /*  background-image: radial-gradient(circle, #379cd2, #4cb1e7); */
 }
 .celeste {
   background-color: #318bbb;
