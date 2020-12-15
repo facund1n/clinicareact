@@ -31,14 +31,14 @@ const actualizarTurno = async (turno) => {
 };
 const eliminarTurno = async (id) => {
   try {
-    return await axios.delete(`${url}/turnos/${id}`);
+    return await axios.delete(`${url}/panel-turnos/${id}`);
   } catch (error) {
     console.log("Error ", error);
   }
 };
 const getTurnosPorId = async (id) => {
   try {
-    const respuesta = await axios.get(`${url}/turnos/${id}`);
+    const respuesta = await axios.get(`${url}/panel-turnos/${id}`);
     return respuesta.data;
   } catch (error) {
     console.log("Error ", error);
