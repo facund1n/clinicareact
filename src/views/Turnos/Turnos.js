@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import NavbarTurnos from "../NavbarTurnos";
+import NavbarTurnos from "../NavBars/NavbarTurnos";
 import { Container, Alert } from "react-bootstrap";
 import { postTurno, getTurnos, eliminarTurno } from "../../services/turnos";
 import FormularioTurnos from "./FormularioTurnos";
@@ -24,7 +24,7 @@ const Turnos = (props) => {
     <>
       <NavbarTurnos />
       <Container>
-        <h1 className="m-2">📲 Sistema Turnos </h1>
+        <h3 className="m-2">📲 Sistema Turnos </h3>
         <FormularioTurnos
           turno={{}}
           buttonTurno={"PEDIR TURNO"}
@@ -34,7 +34,7 @@ const Turnos = (props) => {
           }}
         />
         <div>
-          <h1 className="m-2"> 📄 Mis turnos:</h1>
+          <h3 className="m-2">📄 Mis turnos:</h3>
           {lista.length > 0 ? (
             lista.map((element, index) => {
               return (
@@ -54,7 +54,7 @@ const Turnos = (props) => {
               );
             })
           ) : (
-            <div className="btn-block m-2">
+            <div className="mx-auto container">
               <Alert variant={"info"}>Usted no tiene turnos cargados.</Alert>
             </div>
           )}

@@ -26,20 +26,21 @@ const validationSchema = Yup.object().shape({
   checkbox: Yup.boolean().oneOf([true], "Debe aceptar términos y condiciones."),
 });
 
-const RegistroPaciente = (props) => {
-  const { handleSubmit, handleChange, errors, values } = useFormik({
+const FormularioPaciente = (props) => {
+  const { handleSubmit, handleChange, errors, values, resetForm } = useFormik({
     initialValues: {
-      dni: props.user.dni || "",
-      nombre: props.user.nombre || "",
-      password: props.user.password || "",
+      dni: /* props.paciente.dni || */ "",
+      nombre: /* props.paciente.nombre || */ "",
+      password: /* props.paciente.password || */ "",
       password2: "",
-      fecha: props.user.fecha || "",
+      fecha: /* props.paciente.fecha || */ "",
       checkbox: false,
       tipo: "paciente",
     },
     validationSchema,
     onSubmit: (values) => {
-      props.handlerUser(values);
+      props.handlerPaciente(values);
+      resetForm();
     },
   });
   return (
@@ -146,7 +147,7 @@ const RegistroPaciente = (props) => {
               </Form.Group>
 
               <Button variant="primary" type="submit" block className="mb-2">
-                CREAR CUENTA
+                {props.buttonCrearPaciente}
               </Button>
             </Form>
           </Modal.Body>
@@ -162,8 +163,9 @@ const RegistroPaciente = (props) => {
     </div>
   );
 };
-RegistroPaciente.propTypes = {
-  handlerUser: PropTypes.func,
-  user: PropTypes.object,
+FormularioPaciente.propTypes = {
+  buttonCrearPaciente: PropTypes.string.isRequired,
+  handlerPaciente: PropTypes.func,
+  paciente: PropTypes.object,
 };
-export default RegistroPaciente;
+export default FormularioPaciente;

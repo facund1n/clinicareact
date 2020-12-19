@@ -1,8 +1,8 @@
 import React from "react";
-import NavbarCustom from "./NavbarCustom";
+import NavbarCustom from "./NavBars/NavbarCustom";
 import SimpleSlider from "./SliderCustom";
-import LogoCustom from "../components/LogoCustom";
-import FooterCustom from "../components/FooterCustom";
+import LogoCustom from "../components/Logo/LogoCustom";
+import FooterCustom from "../components/Footer/FooterCustom";
 import { Container } from "react-bootstrap";
 
 const Main = () => {
