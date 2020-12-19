@@ -1,12 +1,12 @@
 import React from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
-import logo from "../img/logo.png";
+import logo from "../../img/logo.png";
 import { Link } from "react-router-dom";
 
 const NavbarCustom = () => {
   return (
     <div>
-      <Navbar className="verde" expand="lg">
+      <Navbar className="celeste" expand="lg">
         <Link to="/">
           <Navbar.Brand>
             <img

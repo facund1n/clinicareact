@@ -1,5 +1,5 @@
 import React from "react";
-import NavbarPanelMedico from "./NavbarPanelMedico";
+import NavbarPanelMedico from "../NavBars/NavbarPanelMedico";
 import { useFormik } from "formik";
 import { Table, Form, Card, Container, Col } from "react-bootstrap";
 

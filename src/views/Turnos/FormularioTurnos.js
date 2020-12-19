@@ -1,4 +1,4 @@
-import MensajeTurnos from "../../components/MensajeTurnos";
+import MensajeTurnos from "./MensajeTurnos";
 import { useFormik } from "formik";
 import { Button, Form, Card, Container, Col } from "react-bootstrap";
 import * as Yup from "yup";
@@ -15,7 +15,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const FormularioTurnos = (props) => {
-  const { handleSubmit, handleChange, errors, values } = useFormik({
+  const { handleSubmit, handleChange, errors, values, resetForm } = useFormik({
     initialValues: {
       especialidad: props.turno.especialidad || "cardiologia",
       dia: props.turno.dia || "",
@@ -25,6 +25,7 @@ const FormularioTurnos = (props) => {
     validationSchema,
     onSubmit: (values) => {
       props.handlerTurno(values);
+      resetForm();
     },
   });
 

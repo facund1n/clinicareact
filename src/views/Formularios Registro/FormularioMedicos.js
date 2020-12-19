@@ -23,18 +23,19 @@ const validationSchema = Yup.object().shape({
     .required("Complete este campo."),
 });
 
-const RegistroMedico = (props) => {
-  const { handleSubmit, handleChange, errors, values } = useFormik({
+const FormularioMedicos = (props) => {
+  const { handleSubmit, handleChange, errors, values, resetForm } = useFormik({
     initialValues: {
-      legajo: props.user.legajo || "",
-      nombre: props.user.nombre || "",
-      password: props.user.password || "",
+      legajo: /* props.medico.legajo || */ "",
+      nombre: /* props.medico.nombre || */ "",
+      password: /* props.medico.password || */ "",
       password2: "",
-      tipo: "medic",
+      tipo: "medico",
     },
     validationSchema,
     onSubmit: (values) => {
-      props.handlerUser(values);
+      props.handlerMedico(values);
+      resetForm();
     },
   });
   return (
@@ -117,7 +118,7 @@ const RegistroMedico = (props) => {
             </Form.Group>
             <p>Por favor verifique los datos antes de ser enviados.</p>
             <Button variant="success" type="submit" block className="mb-2">
-              CREAR CUENTA
+              {props.buttonCrearMedico}
             </Button>
           </Form>
         </Modal.Body>
@@ -133,8 +134,9 @@ const RegistroMedico = (props) => {
   );
 };
 
-RegistroMedico.propTypes = {
-  handlerUser: PropTypes.func,
-  user: PropTypes.object,
+FormularioMedicos.propTypes = {
+  buttonCrearMedico: PropTypes.string.isRequired,
+  handlerMedico: PropTypes.func,
+  medico: PropTypes.object,
 };
-export default RegistroMedico;
+export default FormularioMedicos;
