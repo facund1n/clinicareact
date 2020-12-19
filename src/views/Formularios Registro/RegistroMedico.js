@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import { Modal, Button, Form } from "react-bootstrap";
-import ButtonInicioSesion2 from "../components/ButtonInicioSesion2";
+import ButtonInicioSesion2 from "../../components/Botones/ButtonInicioSesion2";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
 
@@ -30,7 +30,7 @@ const RegistroMedico = (props) => {
       nombre: props.user.nombre || "",
       password: props.user.password || "",
       password2: "",
-      type: "medic",
+      tipo: "medic",
     },
     validationSchema,
     onSubmit: (values) => {
@@ -101,11 +101,11 @@ const RegistroMedico = (props) => {
                 </div>
               ) : null}
               <Form.Control
-                id="type"
-                name="type"
+                id="tipo"
+                name="tipo"
                 type="hidden"
                 onChange={handleChange}
-                value={values.type}
+                value={values.tipo}
               />
               <Form.Control
                 id="validado"

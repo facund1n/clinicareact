@@ -9,7 +9,13 @@ const NavbarCustom = () => {
       <Navbar className="celeste" expand="lg">
         <Link to="/">
           <Navbar.Brand>
-            <img src={logo} className="m-2" width="180px" height="30px" />
+            <img
+              src={logo}
+              className="m-2"
+              width="180px"
+              height="30px"
+              alt="logo"
+            />
           </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

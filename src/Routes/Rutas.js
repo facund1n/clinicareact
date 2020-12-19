@@ -1,11 +1,11 @@
 import React from "react";
-import Main from "./Main";
-import RegistroPaciente from "./RegistroPaciente";
-import LoginPaciente from "./LoginPaciente";
-import LoginMedico from "./LoginMedico";
-import RegistroMedico from "./RegistroMedico";
-import Turnos from "./Turnos";
-import PanelMedico from "./PanelMedico";
+import Main from "../views/Main";
+import RegistroPaciente from "../views/Formularios Registro/RegistroPaciente";
+import LoginPaciente from "../views/Formularios Login/LoginPaciente";
+import LoginMedico from "../views/Formularios Login/LoginMedico";
+import RegistroMedico from "../views/Formularios Registro/RegistroMedico";
+import Turnos from "../views/Turnos/Turnos";
+import PanelMedico from "../views/PanelMedico";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const Rutas = () => {

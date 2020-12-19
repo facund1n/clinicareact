@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from "react";
-import NavbarTurnos from "./NavbarTurnos";
-import { Container, Row as div, Alert } from "react-bootstrap";
-import { setTurno, getTurnos, eliminarTurno } from "../services/turnos";
+import NavbarTurnos from "../NavbarTurnos";
+import { Container, Alert } from "react-bootstrap";
+import { postTurno, getTurnos, eliminarTurno } from "../../services/turnos";
 import FormularioTurnos from "./FormularioTurnos";
 import CardTurnos from "./CardTurnos";
 
 const Turnos = (props) => {
   const [lista, setLista] = useState([]);
-  useEffect(async () => {
-    try {
-      const storageLista = await getTurnos();
-      if (storageLista.data) setLista(storageLista.data);
-    } catch (error) {
-      console.log("Error: ", error);
-    }
-  }, []);
+  useEffect(
+    () =>
+      async function () {
+        try {
+          const storageLista = await getTurnos();
+          if (storageLista.data) setLista(storageLista.data);
+        } catch (error) {
+          console.log("Error: ", error);
+        }
+      },
+    []
+  );
 
   return (
     <>
@@ -25,8 +29,8 @@ const Turnos = (props) => {
           turno={{}}
           buttonTurno={"PEDIR TURNO"}
           handlerTurno={async (values) => {
-            const turnoNuevo = await setTurno(values);
-            setLista([...lista, turnoNuevo.data]);
+            /* const turnoNuevo = await */ postTurno(values);
+            /* setLista([...lista, turnoNuevo.data]); */
           }}
         />
         <div>

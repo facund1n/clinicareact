@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Button, ListGroup } from "react-bootstrap";
 import FormularioTurnos from "./FormularioTurnos";
-import { actualizarTurno } from "../services/turnos";
+import { actualizarTurno } from "../../services/turnos";
 import PropTypes from "prop-types";
 
 const CardDetalle = (props) => {
