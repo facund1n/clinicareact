@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, Button, Container } from "react-bootstrap";
-import mujer from "../img/mujer.png";
+import mujer from "../../img/mujer.png";
 import { Link } from "react-router-dom";
 
 const Bienvenida = () => {

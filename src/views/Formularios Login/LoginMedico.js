@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import { Modal, Button, Form } from "react-bootstrap";
-import ButtonRegistro2 from "../components/ButtonRegistro2";
+import ButtonRegistro2 from "../../components/Botones/ButtonRegistro2";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
 

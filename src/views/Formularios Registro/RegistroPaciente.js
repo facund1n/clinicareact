@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import { Card as Modal, Button, Form, Row, Container } from "react-bootstrap";
-import ButtonInicioSesion2 from "../components/ButtonInicioSesion2";
+import ButtonInicioSesion2 from "../../components/Botones/ButtonInicioSesion2";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
@@ -35,8 +35,7 @@ const RegistroPaciente = (props) => {
       password2: "",
       fecha: props.user.fecha || "",
       checkbox: false,
-      type: "patient",
-      validado: false,
+      tipo: "paciente",
     },
     validationSchema,
     onSubmit: (values) => {
@@ -123,18 +122,11 @@ const RegistroPaciente = (props) => {
                   </div>
                 ) : null}
                 <Form.Control
-                  id="type"
-                  name="type"
+                  id="tipo"
+                  name="tipo"
                   type="hidden"
                   onChange={handleChange}
-                  value={values.type}
-                />
-                <Form.Control
-                  id="validado"
-                  name="validado"
-                  type="hidden"
-                  onChange={handleChange}
-                  value={values.validado}
+                  value={values.tipo}
                 />
                 <Row className="p-2">
                   <Form.Check

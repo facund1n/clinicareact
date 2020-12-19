@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, Button, Container } from "react-bootstrap";
-import info from "../img/info.png";
+import info from "../../img/info.png";
 import { Link } from "react-router-dom";
 
 const Elemento3 = () => {

@@ -1,4 +1,4 @@
-import MensajeTurnos from "../components/MensajeTurnos";
+import MensajeTurnos from "../../components/MensajeTurnos";
 import { useFormik } from "formik";
 import { Button, Form, Card, Container, Col } from "react-bootstrap";
 import * as Yup from "yup";
@@ -8,7 +8,10 @@ const validationSchema = Yup.object().shape({
   especialidad: Yup.string().required("Complete este campo."),
   dia: Yup.string().required("Complete este campo."),
   turno: Yup.string().required("Complete este campo."),
-  problematica: Yup.string().required("Complete este campo."),
+  problematica: Yup.string()
+    .required("Complete este campo.")
+    .min(6, "Mínimo 6 carácteres.")
+    .max(250, "Máximo 250 carácteres."),
 });
 
 const FormularioTurnos = (props) => {

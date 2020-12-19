@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, Button, Container } from "react-bootstrap";
-import mujer2 from "../img/mujer2.png";
+import mujer2 from "../../img/mujer2.png";
 
 const Objetivo = () => {
   return (

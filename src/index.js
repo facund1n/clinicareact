@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Rutas from "./views/Rutas";
+import Rutas from "./Routes/Rutas";
 import reportWebVitals from "./reportWebVitals";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -9,11 +9,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 ReactDOM.render(
-	<React.StrictMode>
-		<Rutas />
-	</React.StrictMode>,
+  <React.StrictMode>
+    <Rutas />
+  </React.StrictMode>,
 
-	document.getElementById("root")
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -8,8 +8,14 @@ const NavbarCustom = () => {
     <div>
       <Navbar className="verde" expand="lg">
         <Link to="/">
-          <Navbar.Brand href="#home">
-            <img src={logo} className="m-2" width="180px" height="30px" />
+          <Navbar.Brand>
+            <img
+              src={logo}
+              className="m-2"
+              width="180px"
+              height="30px"
+              alt="logo"
+            />
           </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
