@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { Modal, Button, Form } from "react-bootstrap";
 import ButtonRegistro2 from "../../components/Botones/ButtonRegistro2";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
+import { getTodosLosMedicos } from "../../services/medicos";
 
 const validationSchema = Yup.object().shape({
   legajo: Yup.string()
@@ -17,14 +18,46 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginMedico = (props) => {
+  const [listaMedicos, setListaMedicos] = useState([]);
+  useEffect(() => {
+    try {
+      const request = async () => {
+        const updatearListaMedicos = await getTodosLosMedicos();
+        if (updatearListaMedicos) {
+          if (updatearListaMedicos.medicosDB)
+            setListaMedicos(updatearListaMedicos.medicosDB);
+          console.log("lista medicos: ", listaMedicos);
+        }
+      };
+      request();
+    } catch (error) {
+      console.log("Error en submit...", error);
+    }
+  }, []);
   const { handleSubmit, handleChange, errors, values } = useFormik({
     initialValues: {
-      legajo: props.user.legajo || "",
-      password: props.user.password || "",
+      legajo: "",
+      password: "",
     },
     validationSchema,
     onSubmit: (values) => {
-      props.handlerUser(values);
+      //get en BD para tomar todos los usuario y luego filtro la lista
+      // para saber si existe uno con DNI = al que se coloque en el form.
+      const filter = listaMedicos.filter(
+        (legajo) => legajo.legajo == values.legajo
+      );
+      // si existe se hace un .map y se obtiene el DNI y el password
+      const legajo1 = filter.map((legajo1) => legajo1.legajo);
+      const password1 = filter.map((password1) => password1.password);
+      // se transforman los valores anteriores como lo requiere mi back end (modelos de paciente y médico)
+      const legajo2 = Number(legajo1);
+      const password2 = String(password1);
+      // si los values coinciden con los datos que se obtuvieron arriba hace el loguin
+      if (legajo2 === values.legajo && password2 === values.password) {
+        console.log("logeado");
+      } else {
+        console.log("no logueado");
+      }
     },
   });
   return (

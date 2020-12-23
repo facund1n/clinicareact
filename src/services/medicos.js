@@ -1,10 +1,10 @@
 const axios = require("axios");
 const url = "http://localhost:3000";
 
-const getMedicos = async () => {
+const getTodosLosMedicos = async () => {
   try {
     const respuesta = await axios.get(`${url}/medicos`); // utilizar esta funcion para filtar turnos por Paciente, este mismo paciente pueda ver sus turnos.
-    return respuesta.medicosDB;
+    return respuesta.data;
   } catch (error) {
     console.log("Error ", error);
   }
@@ -43,7 +43,7 @@ const getTurnosPorId = async (id) => {
 };
 
 export {
-  getMedicos,
+  getTodosLosMedicos,
   postMedico,
   eliminarMedico,
   getTurnosPorId,

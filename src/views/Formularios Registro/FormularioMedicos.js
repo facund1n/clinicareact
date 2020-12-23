@@ -30,7 +30,6 @@ const FormularioMedicos = (props) => {
       nombre: /* props.medico.nombre || */ "",
       password: /* props.medico.password || */ "",
       password2: "",
-      tipo: "medico",
     },
     validationSchema,
     onSubmit: (values) => {
@@ -101,20 +100,6 @@ const FormularioMedicos = (props) => {
                   {errors.password2}
                 </div>
               ) : null}
-              <Form.Control
-                id="tipo"
-                name="tipo"
-                type="hidden"
-                onChange={handleChange}
-                value={values.tipo}
-              />
-              <Form.Control
-                id="validado"
-                name="validado"
-                type="hidden"
-                onChange={handleChange}
-                value={values.validado}
-              />
             </Form.Group>
             <p>Por favor verifique los datos antes de ser enviados.</p>
             <Button variant="success" type="submit" block className="mb-2">

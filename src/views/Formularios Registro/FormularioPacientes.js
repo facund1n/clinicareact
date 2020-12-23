@@ -1,8 +1,8 @@
 import React from "react";
 import { useFormik } from "formik";
 import { Card as Modal, Button, Form, Row, Container } from "react-bootstrap";
-import ButtonInicioSesion2 from "../../components/Botones/ButtonInicioSesion2";
 import { Link } from "react-router-dom";
+import ButtonInicioSesion2 from "../../components/Botones/ButtonInicioSesion2";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
 
@@ -11,6 +11,7 @@ const validationSchema = Yup.object().shape({
     .min(6, "6 caracteres mínimo.")
     .max(8, "8 Caracteres máximo.")
     .required("Complete este campo."),
+
   nombre: Yup.string()
     .min(4, "Mínimo 4 carácteres")
     .max(40, "40 Caracteres máximo.")
@@ -22,20 +23,19 @@ const validationSchema = Yup.object().shape({
   password2: Yup.string()
     .oneOf([Yup.ref("password"), null], "Las contraseñas no coinciden.")
     .required("Complete este campo."),
-  fecha: Yup.string().required("Complete este campo."),
   checkbox: Yup.boolean().oneOf([true], "Debe aceptar términos y condiciones."),
 });
 
 const FormularioPaciente = (props) => {
+  //utilizo useEffect para obtener los pacientes en BD, para comparar y evitar que un usuario tenga el mismo DNI de usuario.
+
   const { handleSubmit, handleChange, errors, values, resetForm } = useFormik({
     initialValues: {
       dni: /* props.paciente.dni || */ "",
       nombre: /* props.paciente.nombre || */ "",
       password: /* props.paciente.password || */ "",
       password2: "",
-      fecha: /* props.paciente.fecha || */ "",
       checkbox: false,
-      tipo: "paciente",
     },
     validationSchema,
     onSubmit: (values) => {
@@ -109,26 +109,6 @@ const FormularioPaciente = (props) => {
                     {errors.password2}
                   </div>
                 ) : null}
-                <Form.Label htmlFor="fecha">Fecha de nacimiento:</Form.Label>
-                <Form.Control
-                  id="fecha"
-                  name="fecha"
-                  type="date"
-                  onChange={handleChange}
-                  value={values.fecha}
-                />
-                {errors.fecha ? (
-                  <div className="bg-light text-danger p-2 font-weight-bold">
-                    {errors.fecha}
-                  </div>
-                ) : null}
-                <Form.Control
-                  id="tipo"
-                  name="tipo"
-                  type="hidden"
-                  onChange={handleChange}
-                  value={values.tipo}
-                />
                 <Row className="p-2">
                   <Form.Check
                     type="checkbox"
