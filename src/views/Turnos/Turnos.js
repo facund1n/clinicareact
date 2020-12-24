@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import NavbarTurnos from "../NavBars/NavbarTurnos";
 import { Container, Alert } from "react-bootstrap";
 import { postTurno, getTurnos, eliminarTurno } from "../../services/turnos";
@@ -7,6 +7,7 @@ import CardTurnos from "./CardTurnos";
 
 const Turnos = (props) => {
   const [lista, setLista] = useState([]);
+
   useEffect(
     () =>
       async function () {
@@ -16,8 +17,7 @@ const Turnos = (props) => {
         } catch (error) {
           console.log("Error: ", error);
         }
-      },
-    []
+      }
   );
 
   return (

@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+
 import { useFormik } from "formik";
+import * as Yup from "yup";
+
 import { Modal, Button, Form } from "react-bootstrap";
 import ButtonRegistro2 from "../../components/Botones/ButtonRegistro2";
-import * as Yup from "yup";
+
 import PropTypes from "prop-types";
 import { getTodosLosPacientes } from "../../services/pacientes";
 
@@ -18,7 +22,9 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginPaciente = () => {
+  let history = useHistory();
   const [listaPacientes, setListaPacientes] = useState([]);
+
   useEffect(() => {
     try {
       const request = async () => {
@@ -26,7 +32,7 @@ const LoginPaciente = () => {
         if (updatearListaPacientes) {
           if (updatearListaPacientes.pacientesDB)
             setListaPacientes(updatearListaPacientes.pacientesDB);
-          console.log("lista pacientes: ", listaPacientes);
+          /* console.log("lista pacientes: ", listaPacientes); */
         }
       };
       request();
@@ -43,18 +49,24 @@ const LoginPaciente = () => {
     onSubmit: (values) => {
       //get en BD para tomar todos los usuario y luego filtro la lista
       // para saber si existe uno con DNI = al que se coloque en el form.
+      // eslint-disable-next-line
       const filter = listaPacientes.filter((dni) => dni.dni == values.dni);
       // si existe se hace un .map y se obtiene el DNI y el password
       const dni1 = filter.map((dni1) => dni1.dni);
       const password1 = filter.map((password1) => password1.password);
+
+      const user = filter.map((user) => user.nombre);
       // se transforman los valores anteriores como lo requiere mi back end (modelos de paciente y médico)
       const dni2 = Number(dni1);
       const password2 = String(password1);
       // si los values coinciden con los datos que se obtuvieron arriba hace el loguin
       if (dni2 === values.dni && password2 === values.password) {
-        console.log("logeado");
+        localStorage.setItem("nombrePaciente", user);
+        localStorage.setItem("logIN", true);
+        alert(`bienvenido: ${user}`);
+        history.push("/panel-turnos");
       } else {
-        console.log("no logueado");
+        alert(`Verifique usuario o contraseña por favor.`);
       }
     },
   });

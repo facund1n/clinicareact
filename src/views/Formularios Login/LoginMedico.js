@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+
 import { useFormik } from "formik";
+import * as Yup from "yup";
+
 import { Modal, Button, Form } from "react-bootstrap";
 import ButtonRegistro2 from "../../components/Botones/ButtonRegistro2";
-import * as Yup from "yup";
+
 import PropTypes from "prop-types";
 import { getTodosLosMedicos } from "../../services/medicos";
 
@@ -17,7 +21,8 @@ const validationSchema = Yup.object().shape({
     .required("Complete este campo."),
 });
 
-const LoginMedico = (props) => {
+const LoginMedico = () => {
+  let history = useHistory();
   const [listaMedicos, setListaMedicos] = useState([]);
   useEffect(() => {
     try {
@@ -26,7 +31,7 @@ const LoginMedico = (props) => {
         if (updatearListaMedicos) {
           if (updatearListaMedicos.medicosDB)
             setListaMedicos(updatearListaMedicos.medicosDB);
-          console.log("lista medicos: ", listaMedicos);
+          /* console.log("lista medicos: ", listaMedicos); */
         }
       };
       request();
@@ -44,19 +49,25 @@ const LoginMedico = (props) => {
       //get en BD para tomar todos los usuario y luego filtro la lista
       // para saber si existe uno con DNI = al que se coloque en el form.
       const filter = listaMedicos.filter(
+        // eslint-disable-next-line
         (legajo) => legajo.legajo == values.legajo
       );
-      // si existe se hace un .map y se obtiene el DNI y el password
+      // si existe se hace un .map y se obtiene el legajo y el password
       const legajo1 = filter.map((legajo1) => legajo1.legajo);
       const password1 = filter.map((password1) => password1.password);
+
+      const user = filter.map((user) => user.nombre);
       // se transforman los valores anteriores como lo requiere mi back end (modelos de paciente y médico)
       const legajo2 = Number(legajo1);
       const password2 = String(password1);
-      // si los values coinciden con los datos que se obtuvieron arriba hace el loguin
+      // si los values coinciden con los datos que se obtuvieron arriba hace el login
       if (legajo2 === values.legajo && password2 === values.password) {
-        console.log("logeado");
+        localStorage.setItem("nombreMedico", user);
+        localStorage.setItem("logIN", true);
+        alert(`bienvenido: ${user}`);
+        history.push("/panel-medicos");
       } else {
-        console.log("no logueado");
+        alert(`Verifique usuario o contraseña por favor.`);
       }
     },
   });

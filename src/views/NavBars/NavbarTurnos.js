@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
 import logo from "../../img/logo.png";
 import { Link } from "react-router-dom";
+import setLogINfalse from "../../services/setLogIN";
 
 const NavbarCustom = () => {
   return (
@@ -21,7 +22,9 @@ const NavbarCustom = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <Button variant="outline-light">Cerrar Sesión</Button>
+            <Button variant="outline-light" onClick={() => setLogINfalse()}>
+              Cerrar Sesión111
+            </Button>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

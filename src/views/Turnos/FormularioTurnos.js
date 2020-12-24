@@ -1,8 +1,10 @@
 import MensajeTurnos from "./MensajeTurnos";
+import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { Button, Form, Card, Container, Col } from "react-bootstrap";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
+import { useHistory } from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
   especialidad: Yup.string().required("Complete este campo."),
@@ -15,8 +17,23 @@ const validationSchema = Yup.object().shape({
 });
 
 const FormularioTurnos = (props) => {
+  let history = useHistory();
+  const [isLogIN, setIsLogIN] = useState(
+    JSON.parse(localStorage.getItem("logIN"))
+  );
+  useEffect(() => {
+    setIsLogIN();
+    if (isLogIN == false) {
+      alert("Debe Iniciar Sesión");
+      history.push("/");
+    } else {
+      history.push("/panel-turnos");
+    }
+  }, [history, isLogIN]);
+
   const { handleSubmit, handleChange, errors, values, resetForm } = useFormik({
     initialValues: {
+      nombre: localStorage.getItem("nombrePaciente"),
       especialidad: props.turno.especialidad || "cardiologia",
       dia: props.turno.dia || "",
       turno: props.turno.turno || "manana",
