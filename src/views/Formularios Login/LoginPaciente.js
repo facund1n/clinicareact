@@ -62,6 +62,7 @@ const LoginPaciente = () => {
       // si los values coinciden con los datos que se obtuvieron arriba hace el loguin
       if (dni2 === values.dni && password2 === values.password) {
         localStorage.setItem("nombrePaciente", user);
+        localStorage.setItem("DNI", dni2);
         localStorage.setItem("logIN", true);
         alert(`bienvenido: ${user}`);
         history.push("/panel-turnos");
