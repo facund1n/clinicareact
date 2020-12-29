@@ -57,6 +57,7 @@ const LoginMedico = () => {
       const password1 = filter.map((password1) => password1.password);
 
       const user = filter.map((user) => user.nombre);
+
       // se transforman los valores anteriores como lo requiere mi back end (modelos de paciente y médico)
       const legajo2 = Number(legajo1);
       const password2 = String(password1);
