@@ -21,6 +21,7 @@ const postTurno = async (turno) => {
 const actualizarTurno = async (turno) => {
   try {
     const respuesta = await axios.put(`${url}/turnos/${turno._id}`, turno);
+    window.location.reload();
     return respuesta.data;
   } catch (error) {
     console.log("Error ", error);

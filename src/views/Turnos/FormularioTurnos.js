@@ -34,9 +34,10 @@ const FormularioTurnos = (props) => {
   const { handleSubmit, handleChange, errors, values, resetForm } = useFormik({
     initialValues: {
       nombre: localStorage.getItem("nombrePaciente"),
-      especialidad: props.turno.especialidad || "cardiologia",
+      dni: localStorage.getItem("DNI"),
+      especialidad: props.turno.especialidad || "Cardiología",
       dia: props.turno.dia || "",
-      turno: props.turno.turno || "manana",
+      turno: props.turno.turno || "Mañana",
       problematica: props.turno.problematica || "",
     },
     validationSchema,
@@ -61,10 +62,10 @@ const FormularioTurnos = (props) => {
                   name="especialidad"
                   onChange={handleChange}
                 >
-                  <option value="cardiologia">Cardiología</option>
-                  <option value="pediatria">Pedriatría</option>
-                  <option value="salud mujer">Salud de la Mujer</option>
-                  <option value="dermatologia">Dermatología</option>
+                  <option value="Cardiología">Cardiología</option>
+                  <option value="Pediatría">Pedriatría</option>
+                  <option value="Salud de la Mujer">Salud de la Mujer</option>
+                  <option value="Dermatología">Dermatología</option>
                 </Form.Control>
                 {errors.especialidad ? (
                   <div className="bg-light text-danger p-2 font-weight-bold">
@@ -86,8 +87,8 @@ const FormularioTurnos = (props) => {
                 ) : null}
                 <Form.Label>Seleccione Turno:</Form.Label>
                 <Form.Control as="select" name="turno" onChange={handleChange}>
-                  <option value="manana">Mañana</option>
-                  <option value="tarde">Tarde</option>
+                  <option value="Mañana">Mañana</option>
+                  <option value="Tarde">Tarde</option>
                 </Form.Control>
                 {errors.turno ? (
                   <div className="bg-light text-danger p-2 font-weight-bold">

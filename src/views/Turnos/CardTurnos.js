@@ -11,7 +11,6 @@ const CardDetalle = (props) => {
       <Card key={indice} style={{ width: "20rem" }}>
         <Card.Header>Turno </Card.Header>
         <Card.Body>
-          <Card.Title>Detalle</Card.Title>
           <ListGroup className="list-group-flush">
             <FormularioTurnos
               turno={turno}

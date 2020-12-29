@@ -22,8 +22,12 @@ const NavbarCustom = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <Button variant="outline-light" onClick={() => setLogINfalse()}>
-              Cerrar Sesión111
+            <Button
+              variant="outline-light"
+              className="m-1"
+              onClick={() => setLogINfalse()}
+            >
+              Cerrar Sesión
             </Button>
           </Nav>
         </Navbar.Collapse>
